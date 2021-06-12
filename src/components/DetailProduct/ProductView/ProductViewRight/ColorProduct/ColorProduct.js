@@ -1,24 +1,11 @@
 import React, { Component } from "react";
 import ItemColorProduct from "./ItemColorProduct/ItemColorProduct";
-
+import { connect } from "react-redux";
 class ColorProduct extends Component {
-  onHoverChangeImage = (data) => {
-    this.props.onHoverChangeImage(data);
-  };
   render() {
-    var { images, indexImageActive } = this.props;
-    var showColorImages = images.map((image, index) => {
-      return (
-        <ItemColorProduct
-          onHoverChangeImage={this.onHoverChangeImage}
-          image={image}
-          key={index}
-          index={index}
-          indexImageActive={
-            typeof indexImageActive === "undefined" ? 0 : indexImageActive
-          }
-        />
-      );
+    var { product } = this.props.detailProduct;
+    var showColorImages = product.UrlImage.map((image, index) => {
+      return <ItemColorProduct image={image} key={index} index={index} />;
     });
     return (
       <div className="w-full my-3">
@@ -28,5 +15,9 @@ class ColorProduct extends Component {
     );
   }
 }
-
-export default ColorProduct;
+const mapStateToProps = (state) => {
+  return {
+    detailProduct: state.detailProduct,
+  };
+};
+export default connect(mapStateToProps)(ColorProduct);

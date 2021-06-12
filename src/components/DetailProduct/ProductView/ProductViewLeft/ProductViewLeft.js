@@ -1,23 +1,11 @@
 import React, { Component } from "react";
 import ItemProductViewLeft from "../ProductViewLeft/ItemProductViewLeft/ItemProductViewLeft";
+import { connect } from "react-redux";
 class ProductViewLeft extends Component {
-  onHoverChangeImage = (data) => {
-    this.props.onHoverChangeImage(data);
-  };
   render() {
-    var { product, indexImageActive, imageMain } = this.props;
+    var { product, imageMain } = this.props.detailProduct;
     var showItemProductViewLeft = product.UrlImage.map((item, index) => {
-      return (
-        <ItemProductViewLeft
-          onHoverChangeImage={this.onHoverChangeImage}
-          item={item}
-          key={index}
-          index={index}
-          indexImageActive={
-            typeof indexImageActive === "undefined" ? 0 : indexImageActive
-          }
-        />
-      );
+      return <ItemProductViewLeft item={item} key={index} index={index} />;
     });
     return (
       <div className="w-full xl:w-7/12 flex">
@@ -34,11 +22,7 @@ class ProductViewLeft extends Component {
           <div className="w-full border-2 border-gray-200 border-solid">
             <img
               id="images__product__detail"
-              src={
-                typeof imageMain === "undefined"
-                  ? product.UrlImage[0].Url
-                  : imageMain
-              }
+              src={imageMain === null ? product.UrlImage[0].Url : imageMain}
               alt=""
               className="w-full object-cover
                 cursor-pointer"
@@ -49,5 +33,9 @@ class ProductViewLeft extends Component {
     );
   }
 }
-
-export default ProductViewLeft;
+const mapStateToProps = (state) => {
+  return {
+    detailProduct: state.detailProduct,
+  };
+};
+export default connect(mapStateToProps)(ProductViewLeft);

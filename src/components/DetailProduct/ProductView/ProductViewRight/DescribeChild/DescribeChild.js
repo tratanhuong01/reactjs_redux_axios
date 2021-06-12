@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-
+import { connect } from "react-redux";
 class DescribeChild extends Component {
   render() {
-    var { product } = this.props;
+    var { product } = this.props.detailProduct;
     return (
       <>
         <div className="mb-3 flex">
@@ -29,7 +29,7 @@ class DescribeChild extends Component {
           {new Intl.NumberFormat(["ban", "id"]).format(
             product.Price.Price * ((100 - product.Price.Sale) / 100)
           )}
-          <u className="text-xl pl-2"> đ</u>
+          <u className="text-xl pl-2">đ</u>
         </p>
         <ul className="text-gray-700 my-2 text-sm">
           <li className="my-2">Kích thước màn hình : 1,2"</li>
@@ -50,5 +50,9 @@ class DescribeChild extends Component {
     );
   }
 }
-
-export default DescribeChild;
+const mapStateToProps = (state) => {
+  return {
+    detailProduct: state.detailProduct,
+  };
+};
+export default connect(mapStateToProps)(DescribeChild);

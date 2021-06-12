@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actions from "../../../actions/index";
 const category = [
   {
     name: "Trang chủ",
@@ -31,7 +33,7 @@ const CategoryLink = ({ label, to, exact }) => {
   return (
     <Route to={to} exact={exact}>
       <li className="hover:text-organce px-2.5 py-4">
-        <Link to={to}>{label}</Link>
+        <a href={to}>{label}</a>
       </li>
     </Route>
   );
@@ -53,6 +55,9 @@ class Category extends Component {
     }
     return result;
   };
+  closeModal = () => {
+    this.props.closeModal();
+  };
   render() {
     return (
       <>
@@ -65,6 +70,7 @@ class Category extends Component {
           </ul>
         </div>
         <span
+          onClick={this.closeModal}
           className="font-bold text-5xl absolute top-32 right-44 
             text-white cursor-pointer h-0"
         >
@@ -74,5 +80,11 @@ class Category extends Component {
     );
   }
 }
-
-export default Category;
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    closeModal: () => {
+      dispatch(actions.closeModal());
+    },
+  };
+};
+export default connect(null, mapDispatchToProps)(Category);

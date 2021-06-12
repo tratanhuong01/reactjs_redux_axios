@@ -9,64 +9,40 @@ import ProductView from "./ProductView";
 import OtherProduct from "../../components/DetailProduct/OtherProduct/OtherProduct";
 import DescribeProduct from "../../components/DetailProduct/ProductView/DescribeProduct/DescribeProduct";
 import NotFound from "../../pages/NotFound/NotFound";
-import api from "../../Utils/api";
+import * as actions from "../../actions/index";
+import { connect } from "react-redux";
 class MainDetailProduct extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      product: null,
-      viewScroll: false,
-    };
-  }
-
   componentDidMount() {
-    window.addEventListener("scroll", this.onViewScroll);
-    api("products", "GET", {})
-      .then((res) => {
-        var index = res.data.findIndex(
-          (item) => item.Path === this.props.match.params.slug
-        );
-        this.setState({
-          product: res.data[index],
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    window.addEventListener("scroll", this.viewScrollProduct);
   }
-  onViewScroll = () => {
-    var y = window.scrollY;
-    if (y >= 610) {
-      this.setState({
-        viewScroll: true,
-      });
-    } else {
-      this.setState({
-        viewScroll: false,
-      });
-    }
+  viewScrollProduct = () => {
+    this.props.viewScrollProduct();
   };
   render() {
-    var { product, viewScroll } = this.state;
+    var product = null;
+    if (this.props.product.length > 0) {
+      this.props.viewProduct(this.props.match.params.slug, this.props.product);
+      product = this.props.detailProduct.product;
+    }
     return (
       <div className="w-full">
         {product === null ? (
           <NotFound />
         ) : (
           <>
-            {viewScroll === true ? (
+            {this.props.detailProduct.viewScroll === true ? (
               <ViewProductWhenScroll product={product} />
             ) : (
               ""
             )}
-            <div className="w-full relative text-white md:text-black">
+            <div className="w-full relative text-white md:text-black z-30">
               <HeaderNormal />
             </div>
             <div className="w-full bg-gray-100">
               <LevelUrl />
               <hr className="my-2"></hr>
               <div className="w-full xl:w-4/5 mx-auto p-4">
-                <ProductView product={product} />
+                <ProductView />
                 <DescribeProduct />
                 <OtherProduct />
               </div>
@@ -83,8 +59,18 @@ class MainDetailProduct extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    product: state.product.product,
+    detailProduct: state.detailProduct,
+    product: state.product,
   };
 };
-const mapDispatchToProps = (dispatch) => {};
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    viewProduct: (slug, products) => {
+      dispatch(actions.viewProduct(slug, products));
+    },
+    viewScrollProduct: () => {
+      dispatch(actions.viewScrollProduct());
+    },
+  };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(MainDetailProduct);

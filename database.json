@@ -1,37 +1,37 @@
 {
   "products": [
     {
-      "IDProduct": "SP100",
-      "NameProduct": "Apple Watch Series 6 GPS 40mm viền nhôm dây cao su",
+      "id": "SP100",
+      "NameProduct": "Apple Watch Series 6 GPS",
       "UrlImage": [
         {
           "ID": 0,
-          "Url": "/images/product__SP100__GRAY.png",
+          "Url": "/images/products/product__SP100__GRAY.png",
           "Color": "Xám"
         },
         {
           "ID": 1,
-          "Url": "/images/product__SP100__WHITE.png",
+          "Url": "/images/products/product__SP100__WHITE.png",
           "Color": "Trắng"
         },
         {
           "ID": 2,
-          "Url": "/images/product__SP100__PINK.png",
+          "Url": "/images/products/product__SP100__PINK.png",
           "Color": "Hồng"
         }
       ],
       "ColorProduct": [
         {
           "ID": 0,
-          "CodeColor": "GRAY"
+          "CodeColor": "XÁM"
         },
         {
           "ID": 1,
-          "CodeColor": "WHITE"
+          "CodeColor": "TRẮNG"
         },
         {
           "ID": 2,
-          "CodeColor": "PINK"
+          "CodeColor": "HỒNG"
         }
       ],
       "Price": {
@@ -49,31 +49,32 @@
           "Size": 44
         }
       ],
-      "Path": "apple-watch-series-6-gps-40mm"
+      "Path": "apple-watch-series-6-gps",
+      "TopSell": 1
     },
     {
-      "IDProduct": "SP101",
+      "id": "SP101",
       "NameProduct": "Nokia Steel HR",
       "UrlImage": [
         {
           "ID": 1,
-          "Url": "/images/product__SP101__WHITE.png",
-          "Color": "WHITE"
+          "Url": "/images/products/product__SP101__WHITE.png",
+          "Color": "TRẮNG"
         },
         {
           "ID": 2,
-          "Url": "/images/product__SP101__BLACK.png",
-          "Color": "BLACK"
+          "Url": "/images/products/product__SP101__BLACK.png",
+          "Color": "ĐEN"
         }
       ],
       "ColorProduct": [
         {
           "ID": 0,
-          "CodeColor": "WHITE"
+          "CodeColor": "TRẮNG"
         },
         {
           "ID": 1,
-          "CodeColor": "BLACK"
+          "CodeColor": "ĐEB"
         }
       ],
       "Price": {
@@ -91,58 +92,88 @@
           "Size": 44
         }
       ],
-      "Path": "nokia-steel-hr"
+      "Path": "nokia-steel-hr",
+      "TopSell": 2
     },
     {
-      "IDProduct": "SP100",
-      "NameProduct": "Apple Watch Series 3 GPS 44mm viền nhôm dây cao su",
+      "id": "SP102",
+      "NameProduct": "Huawei Watch GT",
       "UrlImage": [
         {
           "ID": 0,
-          "Url": "/images/product__SP100__GRAY.png",
-          "Color": "GRAY"
+          "Url": "/images/products/product__SP102__ORANGCE.png",
+          "Color": "CAM"
         },
         {
           "ID": 1,
-          "Url": "/images/product__SP100__WHITE.png",
-          "Color": "WHITE"
-        },
-        {
-          "ID": 2,
-          "Url": "/images/product__SP100__PINK.png",
-          "Color": "PINK"
+          "Url": "/images/products/product__SP102__GREEN.png",
+          "Color": "XANH"
         }
       ],
       "ColorProduct": [
         {
           "ID": 0,
-          "CodeColor": "GRAY"
+          "CodeColor": "CAM"
         },
         {
           "ID": 1,
-          "CodeColor": "WHITE"
-        },
-        {
-          "ID": 2,
-          "CodeColor": "PINK"
+          "CodeColor": "XANH"
         }
       ],
       "Price": {
-        "Price": 5345000,
+        "Price": 2345000,
         "Sale": 8
       },
-      "BrandProduct": "Apple",
+      "BrandProduct": "Huawai",
+      "SizeProduct": [
+        {
+          "ID": 0,
+          "Size": 46
+        }
+      ],
+      "Path": "huawei-watch-gt",
+      "TopSell": 0
+    },
+    {
+      "id": "SP103",
+      "NameProduct": "Samsung Galaxy Watch Active 2 SR-830",
+      "UrlImage": [
+        {
+          "ID": 0,
+          "Url": "/images/products/product__SP103__BLACK.png",
+          "Color": "ĐEN"
+        },
+        {
+          "ID": 1,
+          "Url": "/images/products/product__SP103__PINK.png",
+          "Color": "HỒNG"
+        }
+      ],
+      "ColorProduct": [
+        {
+          "ID": 0,
+          "CodeColor": "ĐEN"
+        },
+        {
+          "ID": 1,
+          "CodeColor": "HỒNG"
+        }
+      ],
+      "Price": {
+        "Price": 2845000,
+        "Sale": 1
+      },
+      "BrandProduct": "Samsung",
       "SizeProduct": [
         {
           "ID": 0,
           "Size": 40
-        },
-        {
-          "ID": 1,
-          "Size": 44
         }
       ],
-      "Path": "apple-watch-series-3-gps-44mm"
+      "Path": "samsung-galaxy-watch-active-2-sr-830",
+      "TopSell": 3
     }
-  ]
+  ],
+  "carts": [],
+  "users": []
 }

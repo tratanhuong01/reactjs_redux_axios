@@ -11,14 +11,13 @@ class ItemProduct extends Component {
     var showImages = product.UrlImage.map((item, index) => {
       return <ItemTypeProduct key={index} image={item} />;
     });
-
     return (
       <Fragment>
-        <div className="w-46% m-2 bg-white relative product__main">
+        <div className="w-46% m-2 bg-white relative product__main z-10">
           {product.Price.Sale === 0 ? "" : <Sale sale={product.Price.Sale} />}
           <div className="w-full relative h-64 mx-auto product ">
             <ImageMain URL={product.UrlImage[0].Url} />
-            <OptionAndView />
+            <OptionAndView product={product} />
           </div>
           <div className="w-full mx-auto p-1 flex">
             <ArrowUp />
@@ -30,7 +29,9 @@ class ItemProduct extends Component {
                     text-xm h-16 flex justify-center"
           >
             <span className="flex items-center font-semibold">
-              {product.NameProduct}
+              <a href={`../detail-product/${product.Path}`}>
+                {product.NameProduct}
+              </a>
             </span>
           </p>
           <p

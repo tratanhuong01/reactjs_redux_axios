@@ -7,8 +7,18 @@ import HeaderNormal from "../../components/Header/HeaderNormal/HeaderNormal";
 import TitleCart from "../../components/Cart/TitleCart/TitleCart";
 import ItemCartMain from "../../components/Cart/ItemCartMain/ItemCartMain";
 import EndCart from "../../components/Cart/EndCart/EndCart";
+import { connect } from "react-redux";
 class MainCart extends Component {
   render() {
+    var { carts } = this.props;
+    var sumMoney = 0;
+    var showItemCartMain = carts.map((item, index) => {
+      sumMoney +=
+        item.product.Price.Price *
+        ((100 - item.product.Price.Sale) / 100) *
+        item.cart.NumberChoose;
+      return <ItemCartMain item={item} key={index} />;
+    });
     return (
       <div className="w-full">
         <div className="w-full relative text-white md:text-black">
@@ -21,10 +31,8 @@ class MainCart extends Component {
             <div className="w-full mx-auto mt-5 mb-2">
               <p className="mb-3 text-2xl font-semibold">Giỏ hàng</p>
               <TitleCart />
-              <ItemCartMain />
-              <ItemCartMain />
-              <ItemCartMain />
-              <EndCart />
+              {showItemCartMain}
+              <EndCart sumMoney={sumMoney} />
             </div>
           </div>
           <Rule />
@@ -35,5 +43,9 @@ class MainCart extends Component {
     );
   }
 }
-
-export default MainCart;
+const mapStateToProps = (state) => {
+  return {
+    carts: state.carts,
+  };
+};
+export default connect(mapStateToProps)(MainCart);

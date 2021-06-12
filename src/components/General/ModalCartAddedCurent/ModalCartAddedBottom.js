@@ -1,25 +1,32 @@
 import React, { Component } from "react";
-
+import { connect } from "react-redux";
 class ModalCartAddedBottom extends Component {
   render() {
+    var { product, cart } = this.props;
+    var url = "";
+    product.UrlImage.forEach(function (item, index) {
+      if (item.Color === cart.Color) {
+        url = item.Url;
+      } else {
+      }
+    });
     return (
       <div className="w-full mt-5">
         <div className="w-11/12 mx-auto flex">
           <div className="w-1/4">
-            <img
-              src="/images/product_3.png"
-              className="w-full object-cover"
-              alt=""
-            />
+            <img src={url} className="w-full object-cover" alt="" />
           </div>
           <div className="w-3/4 flex pl-4">
             <div className="flex flex-wrap items-center w-full">
               <div className="">
                 <p className="w-full mb-2 text-gray-700 cursor-pointer text-xl font-semibold">
-                  Fitbit Charge HR S4
+                  {product.NameProduct}
                 </p>
                 <p className="text-organce">
-                  1.760.000 <u>đ</u>
+                  {new Intl.NumberFormat(["ban", "id"]).format(
+                    product.Price.Price * ((100 - product.Price.Sale) / 100)
+                  )}
+                  <u>đ</u>
                 </p>
               </div>
             </div>
@@ -29,7 +36,8 @@ class ModalCartAddedBottom extends Component {
           <div className="w-1/2 flex">
             <p className="flex items-center hover:text-organce text-gray-700 cursor-pointer">
               <i className="bx bx-caret-right mr-3"></i>
-              Giỏ hàng của bạn hiện có (<span>2</span>) sản phẩm
+              Giỏ hàng của bạn hiện có (<span>{this.props.carts.length}</span>)
+              sản phẩm
             </p>
           </div>
           <div className=" w-1/2 flex justify-end">
@@ -51,5 +59,9 @@ class ModalCartAddedBottom extends Component {
     );
   }
 }
-
-export default ModalCartAddedBottom;
+const mapStateToProps = (state) => {
+  return {
+    carts: state.carts,
+  };
+};
+export default connect(mapStateToProps)(ModalCartAddedBottom);

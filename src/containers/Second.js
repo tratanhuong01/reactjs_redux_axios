@@ -1,16 +1,28 @@
 import React, { Component } from "react";
-import Category from "../components/General/Category/Category";
+import { connect } from "react-redux";
 class Second extends Component {
   render() {
+    var { StateModal, DataModal } = this.props.modal;
     return (
       <div
-        className="w-full h-screen bg-opacity-50 bg-black top-0 left-0 fixed hidden"
+        className={
+          StateModal === true
+            ? "w-full h-screen bg-opacity-50 bg-black top-0 left-0 fixed z-50"
+            : "w-full h-screen bg-opacity-50 bg-black top-0 left-0 fixed hidden z-50"
+        }
         id="second"
       >
-        <Category />
+        {DataModal}
       </div>
     );
   }
 }
-
-export default Second;
+const mapStateToProps = (state) => {
+  return {
+    modal: state.modal,
+  };
+};
+const mapDispatchToProps = (dispatch, props) => {
+  return {};
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Second);

@@ -7,36 +7,43 @@ import ArrowDown from "./TypeProduct/ArrowDown/ArrowDown";
 import ItemTypeProduct from "./TypeProduct/ItemTypeProduct/ItemTypeProduct";
 class ItemProductIndex extends Component {
   render() {
+    var { product } = this.props;
+    var showImages = product.UrlImage.map((item, index) => {
+      return <ItemTypeProduct key={index} image={item} />;
+    });
     return (
       <Fragment>
-        <div className="w-1/2 p-2 relative">
-          <Sale />
+        <div className="w-1/2 p-2 relative z-10">
+          {product.Price.Sale === 0 ? "" : <Sale sale={product.Price.Sale} />}
           <div className="w-full relative h-64 mx-auto product ">
-            <ImageMain />
-            <OptionAndView />
+            <ImageMain URL={product.UrlImage[0].Url} />
+            <OptionAndView product={product} />
           </div>
           <div className="w-full mx-auto p-1 flex">
             <ArrowUp />
-            <ul className="w-11/12 flex ">
-              <ItemTypeProduct />
-              <ItemTypeProduct />
-              <ItemTypeProduct />
-            </ul>
+            <ul className="w-11/12 flex justify-center">{showImages}</ul>
             <ArrowDown />
           </div>
           <p
             className="p-2 hover:text-organce text-center cursor-pointer 
-                    text-xm"
+                    text-xm h-16 flex justify-center"
           >
-            Apple watch series 4
+            <span className="flex items-center font-semibold">
+              <a href={`../detail-product/${product.Path}`}>
+                {product.NameProduct}
+              </a>
+            </span>
           </p>
           <p
             className="p-2 pt-0 text-organce text-center cursor-pointer 
                     text-xm"
           >
-            7.700.000 <u>đ</u>&nbsp;
-            <strike className="text-gray-500">
-              7.900.000 <u>đ</u>
+            {new Intl.NumberFormat().format(
+              product.Price.Price * ((100 - product.Price.Sale) / 100)
+            )}
+            <u>đ</u>&nbsp;
+            <strike className="ml-3 text-gray-500">
+              {new Intl.NumberFormat().format(product.Price.Price)} <u>đ</u>
             </strike>
           </p>
         </div>

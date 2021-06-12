@@ -6,9 +6,9 @@ import * as actions from "./actions/index";
 class App extends Component {
   componentDidMount() {
     this.props.getAllProductRequest();
+    this.props.getAllCartRequest();
   }
   render() {
-    console.log(this.props.product);
     return (
       <Router>
         <Switch>{this.showAllLinks(routes)}</Switch>
@@ -36,6 +36,9 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     getAllProductRequest: () => {
       dispatch(actions.getAllProductRequest());
+    },
+    getAllCartRequest: () => {
+      dispatch(actions.getAllCartRequest());
     },
   };
 };

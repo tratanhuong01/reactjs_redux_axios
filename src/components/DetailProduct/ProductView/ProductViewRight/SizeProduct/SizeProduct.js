@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import ItemSizeProduct from "./ItemSizeProduct/ItemSizeProduct";
+import { connect } from "react-redux";
 class SizeProduct extends Component {
   render() {
-    var { SizeProduct } = this.props;
-    var showSizeProducts = SizeProduct.map((size, index) => {
-      return <ItemSizeProduct size={size} key={index} />;
+    var { product } = this.props.detailProduct;
+    var showSizeProducts = product.SizeProduct.map((size, index) => {
+      return <ItemSizeProduct size={size} key={index} index={index} />;
     });
     return (
       <div className="w-full my-3">
@@ -14,5 +15,9 @@ class SizeProduct extends Component {
     );
   }
 }
-
-export default SizeProduct;
+const mapStateToProps = (state) => {
+  return {
+    detailProduct: state.detailProduct,
+  };
+};
+export default connect(mapStateToProps)(SizeProduct);

@@ -3,16 +3,22 @@ import ItemCart from "./ItemCart/ItemCart";
 
 class ModalCartAdded extends Component {
   render() {
+    var { carts } = this.props;
+    var sumMoney = 0;
+    var showAllCart = carts.map((item, index) => {
+      sumMoney +=
+        item.product.Price.Price *
+        ((100 - item.product.Price.Sale) / 100) *
+        item.cart.NumberChoose;
+      return <ItemCart item={item} key={index} />;
+    });
     return (
       <div
         id="modal__cart__added"
         className="w-80 rounded-lg bg-white absolute 
         top-12 right-1/4 text-gray-700 z-50"
       >
-        <div className="w-full max-h-60 overflow-y-auto p-2">
-          <ItemCart />
-          <ItemCart />
-        </div>
+        <div className="w-full max-h-72 overflow-y-auto p-2">{showAllCart}</div>
         <hr className="my-1"></hr>
         <div className="w-full flex p-2 h-12">
           <div
@@ -25,9 +31,10 @@ class ModalCartAdded extends Component {
             className="w-1/2 float-right justify-end flex items-center 
             text-organce pr-4"
           >
-            7.760.000 <u>đ</u>
+            {new Intl.NumberFormat(["ban", "id"]).format(sumMoney)} <u>đ</u>
           </div>
         </div>
+
         <hr className="my-1"></hr>
         <div className="w-full p-2 h-16">
           <button
