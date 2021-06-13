@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 class ModalCartAddedBottom extends Component {
   render() {
     var { product, cart } = this.props;
@@ -42,8 +43,8 @@ class ModalCartAddedBottom extends Component {
           </div>
           <div className=" w-1/2 flex justify-end">
             <div className="flex items-center">
-              <button
-                type="button"
+              <Link
+                to="/payment"
                 className="px-10 py-3.5 rounded-full shadow-lg bg-organce 
                 font-semibold text-sm font-semibold flex items-center text-white border-2 
                 border-solid border-2 border-gray-100 ml-10 * hover:border-orangce flex 
@@ -51,7 +52,7 @@ class ModalCartAddedBottom extends Component {
               >
                 Tiến hành thanh toán&nbsp;&nbsp;
                 <i className="bx bx-right-arrow-alt text-2xl"></i>
-              </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import TitleMain from "../../General/TitleMain/TitleMain";
 class InfoTopSell extends Component {
   render() {
@@ -7,7 +8,9 @@ class InfoTopSell extends Component {
       <div className="w-full md:w-1/2 px-4">
         <TitleMain Content={"TOP BÁN CHẠY"} />
         <p className="text-2xl hover:text-organce font-semibold pt-5">
-          <a href={`/detail-product/${product.Path}`}>{product.NameProduct}</a>
+          <Link to={`/detail-product/${product.Path}`}>
+            {product.NameProduct}
+          </Link>
         </p>
         <p className="pt-5">
           |&nbsp;&nbsp;

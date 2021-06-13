@@ -5,7 +5,7 @@ import PaymentRight from "./PaymentRight";
 class MainPayment extends Component {
   render() {
     return (
-      <div class="px-4 w-full xl:w-11/12 flex flex-col-reverse xl:flex-row mx-auto">
+      <div className="px-4 w-full xl:w-11/12 flex flex-col-reverse xl:flex-row mx-auto">
         <PaymentLeft />
         <PaymentRight />
       </div>

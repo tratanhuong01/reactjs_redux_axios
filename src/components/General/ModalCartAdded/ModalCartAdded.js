@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import ItemCart from "./ItemCart/ItemCart";
 
 class ModalCartAdded extends Component {
@@ -37,24 +38,24 @@ class ModalCartAdded extends Component {
 
         <hr className="my-1"></hr>
         <div className="w-full p-2 h-16">
-          <button
-            type="button"
+          <Link
+            to="/cart"
             className="px-6 py-2 rounded-full bg-organce 
             hover:bg-white hover:border-white border-2 border-solid text-white
             border-white shadow-lg float-left flex items-center font-semibold 
             hover:text-black ml-2"
           >
             Giỏ hàng
-          </button>
-          <button
-            type="button"
+          </Link>
+          <Link
+            to="/payment"
             className="px-6 py-2 rounded-full hover:bg-organce 
             bg-white border-white border-2 border-solid hover:text-white
             hover:border-white shadow-lg float-right flex items-center font-semibold 
             text-black ml-2"
           >
             Thanh toán
-          </button>
+          </Link>
         </div>
       </div>
     );

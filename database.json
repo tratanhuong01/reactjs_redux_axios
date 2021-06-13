@@ -7,31 +7,31 @@
         {
           "ID": 0,
           "Url": "/images/products/product__SP100__GRAY.png",
-          "Color": "Xám"
+          "Color": "XÁM"
         },
         {
           "ID": 1,
           "Url": "/images/products/product__SP100__WHITE.png",
-          "Color": "Trắng"
+          "Color": "TRẮNG"
         },
         {
           "ID": 2,
           "Url": "/images/products/product__SP100__PINK.png",
-          "Color": "Hồng"
+          "Color": "HỒNG"
         }
       ],
       "ColorProduct": [
         {
           "ID": 0,
-          "CodeColor": "XÁM"
+          "CodeColor": "bg-gray-700"
         },
         {
           "ID": 1,
-          "CodeColor": "TRẮNG"
+          "CodeColor": "bg-white"
         },
         {
           "ID": 2,
-          "CodeColor": "HỒNG"
+          "CodeColor": "bg-pink-700"
         }
       ],
       "Price": {
@@ -70,18 +70,18 @@
       "ColorProduct": [
         {
           "ID": 0,
-          "CodeColor": "TRẮNG"
+          "CodeColor": "bg-white"
         },
         {
           "ID": 1,
-          "CodeColor": "ĐEB"
+          "CodeColor": "bg-black"
         }
       ],
       "Price": {
         "Price": 3678000,
         "Sale": 10
       },
-      "BrandProduct": "Apple",
+      "BrandProduct": "Nokia",
       "SizeProduct": [
         {
           "ID": 0,
@@ -113,11 +113,11 @@
       "ColorProduct": [
         {
           "ID": 0,
-          "CodeColor": "CAM"
+          "CodeColor": "bg-organce"
         },
         {
           "ID": 1,
-          "CodeColor": "XANH"
+          "CodeColor": "bg-green-700"
         }
       ],
       "Price": {
@@ -152,11 +152,11 @@
       "ColorProduct": [
         {
           "ID": 0,
-          "CodeColor": "ĐEN"
+          "CodeColor": "bg-white"
         },
         {
           "ID": 1,
-          "CodeColor": "HỒNG"
+          "CodeColor": "bg-pink-700"
         }
       ],
       "Price": {
@@ -174,6 +174,15 @@
       "TopSell": 3
     }
   ],
-  "carts": [],
+  "carts": [
+    {
+      "IDProduct": "SP103",
+      "IDKhachHang": "",
+      "Color": "ĐEN",
+      "Size": 40,
+      "NumberChoose": 2,
+      "id": 1
+    }
+  ],
   "users": []
 }

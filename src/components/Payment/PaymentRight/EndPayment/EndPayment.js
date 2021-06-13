@@ -7,7 +7,8 @@ class EndPayment extends Component {
         <div className="w-full h-12 mb-3 flex">
           <p className="w-1/2 float-left flex items-center">Tạm tính</p>
           <p className="w-1/2 justify-end float-right flex items-center">
-            15.520.000 <u>đ</u>
+            {new Intl.NumberFormat("ban", "id").format(this.props.sumMoney)}{" "}
+            <u>đ</u>
           </p>
         </div>
         <div className="w-full h-12 mb-3 flex">
@@ -22,13 +23,14 @@ class EndPayment extends Component {
             Tổng cộng
           </p>
           <p className="w-1/2 justify-end float-right flex items-center">
-            15.520.000 <u>đ</u>
+            {new Intl.NumberFormat("ban", "id").format(this.props.sumMoney)}{" "}
+            <u>đ</u>
           </p>
         </div>
         <div className="w-full h-20 mb-3 flex">
           <p className="w-1/2 float-left flex items-center text-xl font-semibold text-organce">
             <span className="flex items-center">
-              <i class="bx bxs-chevron-left mr-3"></i>
+              <i className="bx bxs-chevron-left mr-3"></i>
               Quay về giỏ hàng
             </span>
           </p>

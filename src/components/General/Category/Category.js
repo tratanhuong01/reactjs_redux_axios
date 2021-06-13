@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../../actions/index";
 const category = [
@@ -33,7 +33,7 @@ const CategoryLink = ({ label, to, exact }) => {
   return (
     <Route to={to} exact={exact}>
       <li className="hover:text-organce px-2.5 py-4">
-        <a href={to}>{label}</a>
+        <Link to={to}>{label}</Link>
       </li>
     </Route>
   );

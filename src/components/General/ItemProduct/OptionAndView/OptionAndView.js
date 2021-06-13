@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import * as actions from "../../../../actions/index";
 class OptionAndView extends Component {
@@ -19,7 +20,7 @@ class OptionAndView extends Component {
               className="w-4/5 p-3 mx-auto rounded-full border-2 border-solid
               border-white font-bold text-black bg-white hover:bg-organce hover:text-white mb-2"
             >
-              <a href={`/detail-product/${product.Path}`}>Tùy chọn</a>
+              <Link to={`/detail-product/${product.Path}`}>Tùy chọn</Link>
             </div>
             <button
               onClick={this.openModalFastViewProduct}

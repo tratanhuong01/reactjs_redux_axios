@@ -219,3 +219,55 @@ export const getProductTopSell = (products) => {
     products,
   };
 };
+export const getAllBrandProduct = (products) => {
+  return {
+    type: Types.GET_ALL_BRAND_PRODUCT,
+    products,
+  };
+};
+export const getAllColorProduct = (products) => {
+  return {
+    type: Types.GET_ALL_COLOR_PRODUCT,
+    products,
+  };
+};
+export const getAllSizeProduct = (products) => {
+  return {
+    type: Types.GET_ALL_SIZE_PRODUCT,
+    products,
+  };
+};
+export const filterProductBrand = (products, brand) => {
+  return {
+    type: Types.FILTER_PRODUCT_BRAND,
+    products,
+    brand,
+  };
+};
+export const filterProductColor = (products, color) => {
+  return {
+    type: Types.FILTER_PRODUCT_COLOR,
+    products,
+    color,
+  };
+};
+export const filterProductSize = (products, size) => {
+  return {
+    type: Types.FILTER_PRODUCT_SIZE,
+    products,
+    size,
+  };
+};
+export const filterProductPrice = (products, price) => {
+  return {
+    type: Types.FILTER_PRODUCT_PRICE,
+    products,
+    price,
+  };
+};
+export const loadProductPageProduct = (products) => {
+  return {
+    type: Types.LOAD_PRODUCT_PAGE_PRODUCT,
+    products,
+  };
+};

@@ -7,8 +7,12 @@ class Index extends Component {
   getProductTopSell = (product) => {
     if (product.length > 0) this.props.getProductTopSell(product);
   };
+  closeModal = () => {
+    this.props.closeModal();
+  };
   render() {
     this.getProductTopSell(this.props.product);
+    this.closeModal();
     return (
       <Fragment>
         <MainIndex />
@@ -26,6 +30,9 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     getProductTopSell: (products) => {
       dispatch(actions.getProductTopSell(products));
+    },
+    closeModal: () => {
+      dispatch(actions.closeModal());
     },
   };
 };

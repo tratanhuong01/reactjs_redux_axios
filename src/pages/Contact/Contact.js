@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import Second from "../../containers/Second";
 import MainContact from "../../containers/Contact/MainContact";
+import * as actions from "../../actions/index";
+import { connect } from "react-redux";
 class Contact extends Component {
+  closeModal = () => {
+    this.props.closeModal();
+  };
   render() {
+    this.closeModal();
     return (
       <>
         <MainContact />
@@ -11,5 +17,11 @@ class Contact extends Component {
     );
   }
 }
-
-export default Contact;
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    closeModal: () => {
+      dispatch(actions.closeModal());
+    },
+  };
+};
+export default connect(null, mapDispatchToProps)(Contact);

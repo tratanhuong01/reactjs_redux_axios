@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as actions from "../../../actions/index";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 class ItemCartMain extends Component {
   constructor(props) {
     super(props);
@@ -49,9 +50,9 @@ class ItemCartMain extends Component {
                   className="mb-2 text-gray-700 text-base hover:text-organce text-center 
                     cursor-pointer"
                 >
-                  <a href={`/detail-product/${item.product.Path}`}>
+                  <Link to={`/detail-product/${item.product.Path}`}>
                     {item.product.NameProduct}
-                  </a>
+                  </Link>
                 </p>
                 <p className="text-gray-500 text-base  text-center">
                   Màu : {item.cart.Color} {" - "} Kích thước : {item.cart.Size}{" "}

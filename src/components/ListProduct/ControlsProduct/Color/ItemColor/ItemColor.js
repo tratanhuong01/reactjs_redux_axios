@@ -2,7 +2,12 @@ import React, { Component } from "react";
 
 class ItemColor extends Component {
   render() {
-    return <li className="w-8 h-8 m-2 rounded-full bg-green-500"></li>;
+    return (
+      <li
+        className={`w-10 h-10 my-2 mr-3 ml-0 rounded-full cursor-pointer hover:border-yellow-700 
+        border-2 border-solid ${this.props.item.code}`}
+      ></li>
+    );
   }
 }
 

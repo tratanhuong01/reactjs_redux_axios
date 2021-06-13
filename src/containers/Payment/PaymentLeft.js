@@ -15,7 +15,7 @@ class PaymentLeft extends Component {
               <TitlePayment />
               <FormInfoPayment />
             </div>
-            <div class="w-full xl:w-1/2 xl:pl-4">
+            <div className="w-full xl:w-1/2 xl:pl-4">
               <InfoTransport />
               <PaymentMethod />
             </div>

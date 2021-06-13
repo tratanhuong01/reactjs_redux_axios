@@ -1,26 +1,11 @@
 import React, { Component } from "react";
 import ItemProduct from "../../components/General/ItemProduct/ItemProduct";
-import api from "../../Utils/api";
+import { connect } from "react-redux";
 class ListProduct extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      products: [],
-    };
-  }
-  componentDidMount() {
-    api("products", "GET", {})
-      .then((res) => {
-        this.setState({
-          products: res.data,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
   render() {
-    var { products } = this.state;
+    var { filterProduct } = this.props;
+    var products = filterProduct.products;
+    products = typeof products !== "undefined" ? filterProduct.products : [];
     var showProducts = products.map((product, index) => {
       return <ItemProduct key={index} product={product} />;
     });
@@ -32,5 +17,10 @@ class ListProduct extends Component {
     );
   }
 }
-
-export default ListProduct;
+const mapStateToProps = (state) => {
+  return {
+    product: state.product,
+    filterProduct: state.filterProduct,
+  };
+};
+export default connect(mapStateToProps, null)(ListProduct);

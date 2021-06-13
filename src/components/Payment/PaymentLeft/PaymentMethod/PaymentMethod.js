@@ -14,7 +14,6 @@ class PaymentMethod extends Component {
                 type="radio"
                 name="payment"
                 className="transform scale-125 mr-3"
-                checked
               />
               Thanh toán khi giao hàng (COD)
             </p>
