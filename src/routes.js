@@ -7,45 +7,46 @@ import NotFound from "./pages/NotFound/NotFound";
 import About from "./pages/About/About";
 import News from "./pages/News/News";
 import Contact from "./pages/Contact/Contact";
+import * as Config from "./constants/Config";
 // import { Route } from "react-router";
 const routes = [
   {
-    path: "/",
+    path: Config.PAGE_INDEX,
     exact: true,
     main: () => <Index />,
   },
   {
-    path: "/products",
+    path: Config.PAGE_PRODUCT,
     exact: true,
     main: () => <ListProduct />,
   },
   {
-    path: "/detail-product/:slug",
+    path: Config.PAGE_DETAIL_PRODUCT + "/:slug",
     exact: true,
     main: ({ match }) => <DetailProduct match={match} />,
   },
   {
-    path: "/cart",
+    path: Config.PAGE_CART,
     exact: false,
     main: () => <Cart />,
   },
   {
-    path: "/payment",
+    path: Config.PAGE_PAYMENT,
     exact: false,
     main: () => <Payment />,
   },
   {
-    path: "/about",
+    path: Config.PAGE_ABOUT,
     exact: false,
     main: () => <About />,
   },
   {
-    path: "/news",
+    path: Config.PAGE_NEWS,
     exact: false,
     main: () => <News />,
   },
   {
-    path: "/contact",
+    path: Config.PAGE_CONTACT,
     exact: false,
     main: () => <Contact />,
   },

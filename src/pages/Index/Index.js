@@ -4,6 +4,10 @@ import MainIndex from "../../containers/Index/MainIndex";
 import * as actions from "../../actions/index";
 import { connect } from "react-redux";
 class Index extends Component {
+  constructor(props) {
+    super(props);
+    this.closeModal();
+  }
   getProductTopSell = (product) => {
     if (product.length > 0) this.props.getProductTopSell(product);
   };
@@ -12,7 +16,6 @@ class Index extends Component {
   };
   render() {
     this.getProductTopSell(this.props.product);
-    this.closeModal();
     return (
       <Fragment>
         <MainIndex />

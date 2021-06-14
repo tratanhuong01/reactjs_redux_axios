@@ -5,6 +5,8 @@ import OptionAndView from "./OptionAndView/OptionAndView";
 import ArrowUp from "./TypeProduct/ArrowDown/ArrowDown";
 import ArrowDown from "./TypeProduct/ArrowDown/ArrowDown";
 import ItemTypeProduct from "./TypeProduct/ItemTypeProduct/ItemTypeProduct";
+import * as Config from "../../../constants/Config";
+import { Link } from "react-router-dom";
 class ItemProductIndex extends Component {
   render() {
     var { product } = this.props;
@@ -29,9 +31,9 @@ class ItemProductIndex extends Component {
                     text-xm h-16 flex justify-center"
           >
             <span className="flex items-center font-semibold">
-              <a href={`../detail-product/${product.Path}`}>
+              <Link to={`${Config.PAGE_DETAIL_PRODUCT}/` + product.Path}>
                 {product.NameProduct}
-              </a>
+              </Link>
             </span>
           </p>
           <p

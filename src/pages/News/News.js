@@ -4,11 +4,15 @@ import Second from "../../containers/Second";
 import * as actions from "../../actions/index";
 import { connect } from "react-redux";
 class News extends Component {
+  constructor(props) {
+    super(props);
+    this.closeModal();
+  }
+
   closeModal = () => {
     this.props.closeModal();
   };
   render() {
-    this.closeModal();
     return (
       <>
         <MainNews />

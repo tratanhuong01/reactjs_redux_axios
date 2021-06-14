@@ -2,30 +2,31 @@ import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../../actions/index";
+import * as Config from "../../../constants/Config";
 const category = [
   {
     name: "Trang chủ",
-    to: "/",
+    to: Config.PAGE_INDEX,
     exact: true,
   },
   {
     name: "Sản phẩm",
-    to: "/products",
+    to: Config.PAGE_PRODUCT,
     exact: true,
   },
   {
     name: "Tin tức",
-    to: "/news",
+    to: Config.PAGE_NEWS,
     exact: true,
   },
   {
     name: "Giới thiệu",
-    to: "/about",
+    to: Config.PAGE_ABOUT,
     exact: true,
   },
   {
     name: "Liên hệ",
-    to: "/contact",
+    to: Config.PAGE_CONTACT,
     exact: true,
   },
 ];

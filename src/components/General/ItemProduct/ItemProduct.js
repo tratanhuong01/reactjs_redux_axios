@@ -6,6 +6,7 @@ import ArrowUp from "./TypeProduct/ArrowDown/ArrowDown";
 import ArrowDown from "./TypeProduct/ArrowDown/ArrowDown";
 import ItemTypeProduct from "./TypeProduct/ItemTypeProduct/ItemTypeProduct";
 import { Link } from "react-router-dom";
+import * as Config from "../../../constants/Config";
 class ItemProduct extends Component {
   render() {
     var { product } = this.props;
@@ -30,7 +31,7 @@ class ItemProduct extends Component {
                     text-xm h-16 flex justify-center"
           >
             <span className="flex items-center font-semibold">
-              <Link to={`../detail-product/${product.Path}`}>
+              <Link to={`${Config.PAGE_DETAIL_PRODUCT}/` + product.Path}>
                 {product.NameProduct}
               </Link>
             </span>

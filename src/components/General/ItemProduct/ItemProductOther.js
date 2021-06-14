@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import Sale from "./Sale/Sale";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ImageMain from "./Image/ImageMain/ImageMain";
 import OptionAndView from "./OptionAndView/OptionAndView";
 import ArrowUp from "./TypeProduct/ArrowDown/ArrowDown";
 import ArrowDown from "./TypeProduct/ArrowDown/ArrowDown";
 import ItemTypeProduct from "./TypeProduct/ItemTypeProduct/ItemTypeProduct";
+import * as Config from "../../../constants/Config";
 class ItemProductOther extends Component {
   render() {
     var product = this.props.product;
@@ -36,12 +37,9 @@ class ItemProductOther extends Component {
                     text-xm h-16 flex justify-center"
           >
             <span className="flex items-center font-semibold">
-              <a href={`../detail-product/${product.Path}`}>
+              <Link to={`${Config.PAGE_DETAIL_PRODUCT}/` + product.Path}>
                 {product.NameProduct}
-              </a>
-              {/* <Link to={`/detail-product/${product.Path}`}>
-                {product.NameProduct}
-              </Link> */}
+              </Link>
             </span>
           </p>
           <p

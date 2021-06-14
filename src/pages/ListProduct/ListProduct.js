@@ -4,6 +4,12 @@ import Second from "../../containers/Second";
 import { connect } from "react-redux";
 import * as actions from "../../actions/index";
 class ListProduct extends Component {
+  constructor(props) {
+    super(props);
+    this.closeModal();
+    this.getAll(this.props.product);
+  }
+
   getAll = (products) => {
     if (products.length > 0) this.props.getAll(products);
   };
@@ -11,8 +17,6 @@ class ListProduct extends Component {
     this.props.closeModal();
   };
   render() {
-    this.closeModal();
-    this.getAll(this.props.product);
     return (
       <>
         <MainListProduct />

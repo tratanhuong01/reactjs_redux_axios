@@ -9,7 +9,7 @@ class ApplyCode extends Component {
           name=""
           className="w-3/4 mt-2 p-3 rounded-l-lg border-2 border-solid 
             border-gray-100"
-          placeholder="Nhập mã ưu đãi..."
+          placeholder="Nhập mã ưu đãi (Nếu có)..."
           id=""
         />
         <button

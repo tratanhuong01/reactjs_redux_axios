@@ -12,7 +12,6 @@ var initialState = {
   },
   viewScroll: false,
   indexSizeActive: 0,
-  Type: "Detail-Product",
 };
 
 var myReducer = (state = initialState, action) => {
@@ -51,6 +50,8 @@ var myReducer = (state = initialState, action) => {
     case Types.SCROLL_TOP:
       window.scroll(0, 0);
       state.viewScroll = false;
+      return { ...state };
+    case Types.VIEW_FAST_PRODUCT:
       return { ...state };
     default:
       return state;

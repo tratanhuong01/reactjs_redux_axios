@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ModalCartAdded from "../../../../General/ModalCartAdded/ModalCartAdded";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import * as Config from "../../../../../constants/Config";
 class Center extends Component {
   render() {
     var { carts } = this.props;
@@ -10,7 +11,7 @@ class Center extends Component {
         id="toggel__hover__cart_show"
         className="p-2 flex relative cursor-pointer"
       >
-        <Link to="/cart">
+        <Link to={Config.PAGE_CART}>
           <i className="bx bxs-shopping-bag text-3xl"></i>
         </Link>
         <span

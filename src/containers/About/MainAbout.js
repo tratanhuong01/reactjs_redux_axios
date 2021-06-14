@@ -12,6 +12,7 @@ class MainAbout extends Component {
           <HeaderNormal />
         </div>
         <div className="w-full bg-gray-100">
+          <p className="text-3xl font-bold text-center py-12">Giới thiệu</p>
           <LevelUrl />
           <hr className="my-2"></hr>
           <div className="w-full xl:w-4/5 mx-auto p-4">

@@ -13,6 +13,7 @@ import * as actions from "../../actions/index";
 import { connect } from "react-redux";
 class MainDetailProduct extends Component {
   componentDidMount() {
+    window.scrollTo(0, 0);
     window.addEventListener("scroll", this.viewScrollProduct);
   }
   viewScrollProduct = () => {

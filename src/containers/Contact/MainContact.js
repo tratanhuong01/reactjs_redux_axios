@@ -4,6 +4,7 @@ import LevelUrl from "../../components/General/LevelUrl/LevelUrl";
 import Rule from "../../containers/General/Rule";
 import ReciveInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
 import EndFooter from "../../components/Footer/EndFooter/EndFooter";
+import ContentContact from "./ContentContact";
 class MainContact extends Component {
   render() {
     return (
@@ -13,6 +14,7 @@ class MainContact extends Component {
         </div>
         <div className="w-full bg-gray-100">
           <LevelUrl />
+          <ContentContact />
           <hr className="my-2"></hr>
           <div className="w-full xl:w-4/5 mx-auto p-4">
             <div className="w-full mx-auto mt-5 mb-2"></div>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ItemCart from "./ItemCart/ItemCart";
-
+import * as Config from "../../../constants/Config";
 class ModalCartAdded extends Component {
   render() {
     var { carts } = this.props;
@@ -39,7 +39,7 @@ class ModalCartAdded extends Component {
         <hr className="my-1"></hr>
         <div className="w-full p-2 h-16">
           <Link
-            to="/cart"
+            to={Config.PAGE_CART}
             className="px-6 py-2 rounded-full bg-organce 
             hover:bg-white hover:border-white border-2 border-solid text-white
             border-white shadow-lg float-left flex items-center font-semibold 
@@ -47,15 +47,25 @@ class ModalCartAdded extends Component {
           >
             Giỏ hàng
           </Link>
-          <Link
-            to="/payment"
-            className="px-6 py-2 rounded-full hover:bg-organce 
+          {sumMoney === 0 ? (
+            <input
+              type="button"
+              className="px-6 py-2 rounded-full border-white border-2 border-solid bg-gray-500
+              shadow-lg float-right flex items-center font-semibold ml-2 cursor-not-allowed text-white"
+              value="Thanh toán"
+              onChange={() => ""}
+            />
+          ) : (
+            <Link
+              to={Config.PAGE_PAYMENT}
+              className="px-6 py-2 rounded-full hover:bg-organce 
             bg-white border-white border-2 border-solid hover:text-white
             hover:border-white shadow-lg float-right flex items-center font-semibold 
             text-black ml-2"
-          >
-            Thanh toán
-          </Link>
+            >
+              Thanh toán
+            </Link>
+          )}
         </div>
       </div>
     );

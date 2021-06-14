@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class EndPayment extends Component {
   render() {
@@ -30,8 +31,10 @@ class EndPayment extends Component {
         <div className="w-full h-20 mb-3 flex">
           <p className="w-1/2 float-left flex items-center text-xl font-semibold text-organce">
             <span className="flex items-center">
-              <i className="bx bxs-chevron-left mr-3"></i>
-              Quay về giỏ hàng
+              <Link to="/cart">
+                <i className="bx bxs-chevron-left mr-3"></i>
+                Quay về giỏ hàng
+              </Link>
             </span>
           </p>
           <p className="w-1/2 float-right flex justify-end items-center">

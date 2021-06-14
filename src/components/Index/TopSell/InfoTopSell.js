@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import TitleMain from "../../General/TitleMain/TitleMain";
+import * as Config from "../../../constants/Config";
 class InfoTopSell extends Component {
   render() {
     var { product } = this.props;
@@ -8,7 +9,7 @@ class InfoTopSell extends Component {
       <div className="w-full md:w-1/2 px-4">
         <TitleMain Content={"TOP BÁN CHẠY"} />
         <p className="text-2xl hover:text-organce font-semibold pt-5">
-          <Link to={`/detail-product/${product.Path}`}>
+          <Link to={`${Config.PAGE_DETAIL_PRODUCT}/${product.Path}`}>
             {product.NameProduct}
           </Link>
         </p>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import * as Config from "../../../constants/Config";
 class EndCart extends Component {
   render() {
     return (
@@ -8,7 +8,7 @@ class EndCart extends Component {
         <div className="w-1/4 hidden sm:flex sm:justify-start">
           <div className="flex items-center">
             <Link
-              to="/products"
+              to={Config.PAGE_PRODUCT}
               className="w-full px-5 py-3.5 rounded-full shadow-lg bg-white  
               font-semibold text-sm font-semibold flex items-center border-2 font-semibold
               border-solid border-2 border-orangce * hover:bg-organce hover:text-white flex 
@@ -35,14 +35,26 @@ class EndCart extends Component {
             </div>
           </div>
           <div className="w-full flex justify-end">
-            <Link
-              to="/payment"
-              className="px-12 py-4 text-base rounded-full shadow-lg bg-organce 
-              font-semibold flex items-center text-white border-solid border-2 border-gray-100 
-              ml-10 * hover:border-organce  flex hover:bg-white hover:text-black items-center"
-            >
-              Thanh toán
-            </Link>
+            {this.props.sumMoney === 0 ? (
+              <input
+                type="button"
+                className="px-12 py-4 text-base rounded-full shadow-lg bg-gray-500 
+                font-semibold flex items-center text-white border-solid border-2 border-gray-100 
+                ml-10 * items-center cursor-not-allowed"
+                value="Thanh toán"
+                onChange={() => ""}
+                disabled="true"
+              />
+            ) : (
+              <Link
+                to={Config.PAGE_PAYMENT}
+                className="px-12 py-4 text-base rounded-full shadow-lg bg-organce 
+            font-semibold flex items-center text-white border-solid border-2 border-gray-100 
+            ml-10 * hover:border-organce  flex hover:bg-white hover:text-black items-center"
+              >
+                Thanh toán
+              </Link>
+            )}
           </div>
         </div>
       </div>

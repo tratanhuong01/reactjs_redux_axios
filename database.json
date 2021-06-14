@@ -178,11 +178,20 @@
     {
       "IDProduct": "SP103",
       "IDKhachHang": "",
-      "Color": "ĐEN",
+      "Color": "HỒNG",
       "Size": 40,
-      "NumberChoose": 2,
+      "NumberChoose": 1,
       "id": 1
     }
   ],
-  "users": []
+  "users": [],
+  "promo__code": [
+    {
+      "id": 0,
+      "sale": 1,
+      "code": "KSNH10091",
+      "dateFrom": "02-06-2021",
+      "dateTo": "20-06-2021"
+    }
+  ]
 }
