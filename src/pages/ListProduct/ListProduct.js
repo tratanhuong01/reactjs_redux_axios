@@ -11,7 +11,10 @@ class ListProduct extends Component {
   }
 
   getAll = (products) => {
-    if (products.length > 0) this.props.getAll(products);
+    var { getAll } = this.props;
+    if (products.length > 0) {
+      getAll(products);
+    }
   };
   closeModal = () => {
     this.props.closeModal();
@@ -28,6 +31,7 @@ class ListProduct extends Component {
 const mapStateToProps = (state) => {
   return {
     product: state.product,
+    filterProduct: state.filterProduct,
   };
 };
 const mapDispatchToProps = (dispatch, props) => {
@@ -37,6 +41,7 @@ const mapDispatchToProps = (dispatch, props) => {
       dispatch(actions.getAllColorProduct(products));
       dispatch(actions.getAllSizeProduct(products));
     },
+
     closeModal: () => {
       dispatch(actions.closeModal());
     },

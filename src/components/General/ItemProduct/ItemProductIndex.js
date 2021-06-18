@@ -8,17 +8,46 @@ import ItemTypeProduct from "./TypeProduct/ItemTypeProduct/ItemTypeProduct";
 import * as Config from "../../../constants/Config";
 import { Link } from "react-router-dom";
 class ItemProductIndex extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      imageMain: this.props.product.UrlImage[0].Url,
+      imageChange: null,
+      numberIndex: -1,
+    };
+  }
+  onMouseEnter = (url) => {
+    this.setState({
+      imageChange: url,
+    });
+  };
+  onMouseLeave = () => {
+    this.setState({
+      imageChange: null,
+      numberIndex: -1,
+    });
+  };
   render() {
     var { product } = this.props;
+    var { imageMain, imageChange, numberIndex } = this.state;
     var showImages = product.UrlImage.map((item, index) => {
-      return <ItemTypeProduct key={index} image={item} />;
+      return (
+        <ItemTypeProduct
+          key={index}
+          image={item}
+          index={index}
+          onMouseEnters={this.onMouseEnter}
+          onMouseLeaves={this.onMouseLeave}
+          numberIndex={numberIndex}
+        />
+      );
     });
     return (
       <Fragment>
         <div className="w-1/2 p-2 relative z-10">
           {product.Price.Sale === 0 ? "" : <Sale sale={product.Price.Sale} />}
           <div className="w-full relative h-64 mx-auto product ">
-            <ImageMain URL={product.UrlImage[0].Url} />
+            <ImageMain URL={imageChange === null ? imageMain : imageChange} />
             <OptionAndView product={product} />
           </div>
           <div className="w-full mx-auto p-1 flex">

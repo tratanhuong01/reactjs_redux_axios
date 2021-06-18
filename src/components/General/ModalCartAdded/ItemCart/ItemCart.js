@@ -3,10 +3,11 @@ import * as actions from "../../../../actions/index";
 import { connect } from "react-redux";
 class ItemCart extends Component {
   deleteCartByIDRequest = () => {
-    this.props.deleteCartByIDRequest(this.props.item.cart.id);
+    var { deleteCartByIDRequest, item, user } = this.props;
+    deleteCartByIDRequest(item.cart.id, user);
   };
   render() {
-    var { item } = this.props;
+    var { item, number } = this.props;
     var url = "";
     item.product.UrlImage.forEach(function (child, index) {
       if (child.Color === item.cart.Color) {
@@ -28,7 +29,7 @@ class ItemCart extends Component {
                 item.product.Price.Price *
                   ((100 - item.product.Price.Sale) / 100)
               )}{" "}
-              <u className="mr-2">đ</u>x{item.cart.NumberChoose}
+              <u className="mr-2">đ</u>x{number}
             </p>
             <span
               onClick={this.deleteCartByIDRequest}
@@ -44,11 +45,16 @@ class ItemCart extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    deleteCartByIDRequest: (id) => {
-      dispatch(actions.deleteCartByIDRequest(id));
+    deleteCartByIDRequest: (id, user) => {
+      dispatch(actions.deleteCartByIDRequest(id, user));
     },
   };
 };
-export default connect(null, mapDispatchToProps)(ItemCart);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemCart);

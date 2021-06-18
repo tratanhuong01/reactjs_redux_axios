@@ -2,24 +2,47 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ItemCart from "./ItemCart/ItemCart";
 import * as Config from "../../../constants/Config";
+import { connect } from "react-redux";
+import * as actions from "../../../actions/index";
 class ModalCartAdded extends Component {
+  openModalLogin = () => {
+    this.props.openModalLogin();
+  };
   render() {
-    var { carts } = this.props;
+    var { carts, user } = this.props;
     var sumMoney = 0;
     var showAllCart = carts.map((item, index) => {
       sumMoney +=
         item.product.Price.Price *
         ((100 - item.product.Price.Sale) / 100) *
         item.cart.NumberChoose;
-      return <ItemCart item={item} key={index} />;
+      return (
+        <ItemCart item={item} key={index} number={item.cart.NumberChoose} />
+      );
     });
     return (
       <div
-        id="modal__cart__added"
-        className="w-80 rounded-lg bg-white absolute 
-        top-12 right-1/4 text-gray-700 z-50"
+        className="w-80 rounded-lg bg-white absolute animate__animated animate__zoomIn 
+        top-20 right-1/4 text-gray-700 z-50 modal__cart__added border-2 border-solid 
+        border-gray-200 shadow-lg"
       >
-        <div className="w-full max-h-72 overflow-y-auto p-2">{showAllCart}</div>
+        <div className="w-full max-h-72 overflow-y-auto p-2">
+          {showAllCart.length === 0 ? (
+            <>
+              <p className="text-center font-semibold my-4">
+                Chưa có sản phẩm nào trong giỏ hàng
+              </p>
+              <div
+                className="flex justify-center items-center text-blue-500 
+                font-semibold"
+              >
+                <Link to={Config.PAGE_PRODUCT}>Xem thêm sản phẩm</Link>
+              </div>
+            </>
+          ) : (
+            showAllCart
+          )}
+        </div>
         <hr className="my-1"></hr>
         <div className="w-full flex p-2 h-12">
           <div
@@ -55,13 +78,24 @@ class ModalCartAdded extends Component {
               value="Thanh toán"
               onChange={() => ""}
             />
+          ) : user === null ? (
+            <button
+              onClick={this.openModalLogin}
+              type="button"
+              className="px-6 py-2 rounded-full hover:bg-organce 
+              bg-white border-white border-2 border-solid hover:text-white
+              hover:border-white shadow-lg float-right flex items-center font-semibold 
+              text-black ml-2"
+            >
+              Thanh toán
+            </button>
           ) : (
             <Link
               to={Config.PAGE_PAYMENT}
               className="px-6 py-2 rounded-full hover:bg-organce 
-            bg-white border-white border-2 border-solid hover:text-white
-            hover:border-white shadow-lg float-right flex items-center font-semibold 
-            text-black ml-2"
+              bg-white border-white border-2 border-solid hover:text-white
+              hover:border-white shadow-lg float-right flex items-center font-semibold 
+              text-black ml-2"
             >
               Thanh toán
             </Link>
@@ -71,5 +105,16 @@ class ModalCartAdded extends Component {
     );
   }
 }
-
-export default ModalCartAdded;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    openModalLogin: () => {
+      dispatch(actions.openModalLogin());
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(ModalCartAdded);

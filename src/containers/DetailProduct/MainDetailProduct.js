@@ -9,22 +9,10 @@ import ProductView from "./ProductView";
 import OtherProduct from "../../components/DetailProduct/OtherProduct/OtherProduct";
 import DescribeProduct from "../../components/DetailProduct/ProductView/DescribeProduct/DescribeProduct";
 import NotFound from "../../pages/NotFound/NotFound";
-import * as actions from "../../actions/index";
 import { connect } from "react-redux";
 class MainDetailProduct extends Component {
-  componentDidMount() {
-    window.scrollTo(0, 0);
-    window.addEventListener("scroll", this.viewScrollProduct);
-  }
-  viewScrollProduct = () => {
-    this.props.viewScrollProduct();
-  };
   render() {
-    var product = null;
-    if (this.props.product.length > 0) {
-      this.props.viewProduct(this.props.match.params.slug, this.props.product);
-      product = this.props.detailProduct.product;
-    }
+    var product = this.props.detailProduct.product;
     return (
       <div className="w-full">
         {product === null ? (
@@ -32,7 +20,7 @@ class MainDetailProduct extends Component {
         ) : (
           <>
             {this.props.detailProduct.viewScroll === true ? (
-              <ViewProductWhenScroll product={product} />
+              <ViewProductWhenScroll />
             ) : (
               ""
             )}
@@ -61,17 +49,6 @@ class MainDetailProduct extends Component {
 const mapStateToProps = (state) => {
   return {
     detailProduct: state.detailProduct,
-    product: state.product,
   };
 };
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    viewProduct: (slug, products) => {
-      dispatch(actions.viewProduct(slug, products));
-    },
-    viewScrollProduct: () => {
-      dispatch(actions.viewScrollProduct());
-    },
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(MainDetailProduct);
+export default connect(mapStateToProps)(MainDetailProduct);

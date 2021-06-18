@@ -28,7 +28,7 @@ class ProductViewRight extends Component {
     this.props.ascOrDescNumberProduct(number);
   };
   checkIssetProduct = (product, productMain) => {
-    var carts = this.props.carts;
+    var { carts } = this.props;
     product.Color =
       product.Color === "" ? productMain.UrlImage[0].Color : product.Color;
     product.Size =
@@ -42,20 +42,19 @@ class ProductViewRight extends Component {
     return index;
   };
   addCartRequest = () => {
+    window.scrollTo(0, 0);
+    var { carts, detailProduct, user, addCartRequest, updateCartIssetRequest } =
+      this.props;
     var index = this.checkIssetProduct(
-      this.props.detailProduct.productChoose,
-      this.props.detailProduct.product
+      detailProduct.productChoose,
+      detailProduct.product
     );
-    var carts = this.props.carts;
     if (index === -1) {
-      this.props.addCartRequest(
-        this.props.detailProduct.productChoose,
-        this.props.detailProduct.product
-      );
+      addCartRequest(detailProduct.productChoose, detailProduct.product, user);
     } else {
-      var cart = this.props.detailProduct.productChoose;
+      var cart = detailProduct.productChoose;
       cart.id = carts[index].cart.id;
-      this.props.updateCartIssetRequest(cart, this.props.detailProduct.product);
+      updateCartIssetRequest(cart, detailProduct.product, user);
     }
   };
   render() {
@@ -116,6 +115,7 @@ const mapStateToProps = (state) => {
   return {
     detailProduct: state.detailProduct,
     carts: state.carts,
+    user: state.user,
   };
 };
 const mapDispatchToProps = (dispatch, props) => {
@@ -123,13 +123,16 @@ const mapDispatchToProps = (dispatch, props) => {
     ascOrDescNumberProduct: (data) => {
       dispatch(actions.ascOrDescNumberProduct(data));
     },
-    addCartRequest: (cart, product) => {
-      dispatch(actions.addCartRequest(cart, product));
+    addCartRequest: (cart, product, user) => {
+      dispatch(actions.addCartRequest(cart, product, user));
       dispatch(actions.showModalAddCartCurrent(cart, product));
     },
-    updateCartIssetRequest: (cart, product) => {
-      dispatch(actions.updateCartIssetRequest(cart));
+    updateCartIssetRequest: (cart, product, user) => {
+      dispatch(actions.updateCartIssetRequest(cart, user));
       dispatch(actions.showModalAddCartCurrent(cart, product));
+    },
+    openModalLogin: () => {
+      dispatch(actions.openModalLogin());
     },
   };
 };

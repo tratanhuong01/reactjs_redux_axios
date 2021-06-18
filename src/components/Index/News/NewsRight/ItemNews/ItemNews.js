@@ -7,7 +7,7 @@ class ItemNews extends Component {
         <div className="w-1/4 news__left relative cursor-pointer">
           <div
             className="w-full absolute top-0 left-0 bg-black
-        bg-opacity-50 h-full news__view"
+            bg-opacity-50 h-full news__view"
           >
             <div className="w-full relative h-full">
               <div
@@ -18,10 +18,10 @@ class ItemNews extends Component {
           </div>
           <i
             className="bx bx-play-circle absolute text-4xl cursor-pointer text-white absolute top-1/2  
-        left-1/2 transform -translate-y-1/2 -translate-x-1/2"
+            left-1/2 transform -translate-y-1/2 -translate-x-1/2"
           ></i>
           <img
-            src="./images/thumnail_1.jpg"
+            src="/images/thumnail_2.jpg"
             className="w-full object-cover"
             alt=""
           />

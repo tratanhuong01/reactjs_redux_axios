@@ -3,6 +3,13 @@ import { connect } from "react-redux";
 class Second extends Component {
   render() {
     var { StateModal, DataModal } = this.props.modal;
+    if (StateModal === true) {
+      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
+    } else {
+      document
+        .getElementsByTagName("body")[0]
+        .classList.remove("overflow-hidden");
+    }
     return (
       <div
         className={

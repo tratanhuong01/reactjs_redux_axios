@@ -6,14 +6,27 @@ class Brand extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      brand: "Tất cả",
+      brand:
+        this.props.filterProduct.brand === null
+          ? "Tất cả"
+          : this.props.filterProduct.brand,
     };
   }
   filterProductBrand = (products, brand) => {
     this.setState({
       brand: brand,
     });
-    this.props.filterProductBrand(products, brand);
+    var { filterProductColor, filterProductBrand, filterProductSize } =
+      this.props;
+    filterProductBrand(products, brand);
+    filterProductColor(
+      this.props.filterProduct.products,
+      this.props.filterProduct.color
+    );
+    // filterProductSize(
+    //   this.props.filterProduct.products,
+    //   this.props.filterProduct.size
+    // );
   };
   render() {
     var { brand } = this.state;
@@ -49,8 +62,17 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    filterProductBrand: (products, brand) => {
-      dispatch(actions.filterProductBrand(products, brand));
+    filterProductBrand: (products, data) => {
+      dispatch(actions.filterProductBrand(products, data));
+    },
+    filterProductSize: (products, data) => {
+      dispatch(actions.filterProductSize(products, data));
+    },
+    filterProductColor: (products, data) => {
+      dispatch(actions.filterProductColor(products, data));
+    },
+    filterProductPrice: (products, data) => {
+      dispatch(actions.filterProductPrice(products, data));
     },
   };
 };

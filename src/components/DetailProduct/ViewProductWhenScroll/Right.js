@@ -17,6 +17,7 @@ class Right extends Component {
     return index;
   };
   addCartRequest = () => {
+    window.scrollTo(0, 0);
     var index = this.checkIssetProduct(
       this.props.detailProduct.productChoose,
       this.props.detailProduct.product

@@ -7,6 +7,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import About from "./pages/About/About";
 import News from "./pages/News/News";
 import Contact from "./pages/Contact/Contact";
+import Search from "./pages/Search/Search";
 import * as Config from "./constants/Config";
 // import { Route } from "react-router";
 const routes = [
@@ -49,6 +50,11 @@ const routes = [
     path: Config.PAGE_CONTACT,
     exact: false,
     main: () => <Contact />,
+  },
+  {
+    path: Config.PAGE_SEARCH,
+    exact: true,
+    main: () => <Search />,
   },
   {
     path: "",

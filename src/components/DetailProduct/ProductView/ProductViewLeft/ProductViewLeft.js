@@ -7,6 +7,7 @@ class ProductViewLeft extends Component {
     var showItemProductViewLeft = product.UrlImage.map((item, index) => {
       return <ItemProductViewLeft item={item} key={index} index={index} />;
     });
+
     return (
       <div className="w-full xl:w-7/12 flex">
         <ul className="w-2/12">

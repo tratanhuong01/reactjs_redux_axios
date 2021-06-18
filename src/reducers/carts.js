@@ -9,7 +9,6 @@ var myReducer = (state = initialState, action) => {
       return [...state];
     case Types.ADD_CART:
       var { cart, product } = action.cart;
-
       var data = {
         cart: cart,
         product: product,
@@ -33,7 +32,6 @@ var myReducer = (state = initialState, action) => {
         return item.cart.id === action.cart.id;
       });
       state[index].cart = action.cart;
-      console.log(state);
       return [...state];
     default:
       return state;

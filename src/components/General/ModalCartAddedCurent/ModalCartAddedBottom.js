@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import * as actions from "../../../actions/index";
+import * as Config from "../../../constants/Config";
 class ModalCartAddedBottom extends Component {
+  openModalLogin = () => {
+    this.props.openModalLogin();
+  };
   render() {
-    var { product, cart } = this.props;
+    var { product, cart, user } = this.props;
     var url = "";
     product.UrlImage.forEach(function (item, index) {
       if (item.Color === cart.Color) {
@@ -43,16 +48,30 @@ class ModalCartAddedBottom extends Component {
           </div>
           <div className=" w-1/2 flex justify-end">
             <div className="flex items-center">
-              <Link
-                to="/payment"
-                className="px-10 py-3.5 rounded-full shadow-lg bg-organce 
-                font-semibold text-sm font-semibold flex items-center text-white border-2 
-                border-solid border-2 border-gray-100 ml-10 * hover:border-orangce flex 
-                items-center"
-              >
-                Tiến hành thanh toán&nbsp;&nbsp;
-                <i className="bx bx-right-arrow-alt text-2xl"></i>
-              </Link>
+              {user === null ? (
+                <button
+                  onClick={this.openModalLogin}
+                  button="button"
+                  className="px-10 py-3.5 rounded-full shadow-lg bg-organce 
+                  font-semibold text-sm font-semibold flex items-center text-white border-2 
+                  border-solid border-2 border-gray-100 ml-10 * hover:border-orangce flex 
+                  items-center"
+                >
+                  Tiến hành thanh toán&nbsp;&nbsp;
+                  <i className="bx bx-right-arrow-alt text-2xl"></i>
+                </button>
+              ) : (
+                <Link
+                  to={Config.PAGE_PAYMENT}
+                  className="px-10 py-3.5 rounded-full shadow-lg bg-organce 
+                  font-semibold text-sm font-semibold flex items-center text-white border-2 
+                  border-solid border-2 border-gray-100 ml-10 * hover:border-orangce flex 
+                  items-center"
+                >
+                  Tiến hành thanh toán&nbsp;&nbsp;
+                  <i className="bx bx-right-arrow-alt text-2xl"></i>
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -63,6 +82,17 @@ class ModalCartAddedBottom extends Component {
 const mapStateToProps = (state) => {
   return {
     carts: state.carts,
+    user: state.user,
   };
 };
-export default connect(mapStateToProps)(ModalCartAddedBottom);
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    openModalLogin: () => {
+      dispatch(actions.openModalLogin());
+    },
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ModalCartAddedBottom);

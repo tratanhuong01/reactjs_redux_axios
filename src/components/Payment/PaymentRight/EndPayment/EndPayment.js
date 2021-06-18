@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import * as Config from "../../../../constants/Config";
 class EndPayment extends Component {
   render() {
     return (
@@ -31,7 +31,7 @@ class EndPayment extends Component {
         <div className="w-full h-20 mb-3 flex">
           <p className="w-1/2 float-left flex items-center text-xl font-semibold text-organce">
             <span className="flex items-center">
-              <Link to="/cart">
+              <Link to={Config.PAGE_CART}>
                 <i className="bx bxs-chevron-left mr-3"></i>
                 Quay về giỏ hàng
               </Link>

@@ -2,9 +2,7 @@ import React, { Component } from "react";
 
 class ItemBrand extends Component {
   onChange = (event) => {
-    var target = event.target;
-    var value = target.value;
-    this.props.filterProductBrand(this.props.product, value);
+    this.props.filterProductBrand(this.props.product, event.target.value);
   };
   render() {
     var { brand, item } = this.props;

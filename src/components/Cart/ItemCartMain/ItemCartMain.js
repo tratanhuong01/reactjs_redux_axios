@@ -11,7 +11,8 @@ class ItemCartMain extends Component {
   }
 
   deleteCartByIDRequest = () => {
-    this.props.deleteCartByIDRequest(this.props.item.cart.id);
+    var { deleteCartByIDRequest, item, user } = this.props;
+    deleteCartByIDRequest(item.cart.id, user);
   };
   onChange = (event) => {
     var target = event.target;
@@ -20,9 +21,9 @@ class ItemCartMain extends Component {
     this.setState({
       [name]: value,
     });
-    var item = this.props.item;
+    var { item, user, updateCartRequest } = this.props;
     item.cart.NumberChoose = value;
-    this.props.updateCartRequest(item.cart);
+    updateCartRequest(item.cart, user);
   };
   render() {
     var { item } = this.props;
@@ -129,14 +130,19 @@ class ItemCartMain extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    deleteCartByIDRequest: (id) => {
-      dispatch(actions.deleteCartByIDRequest(id));
+    deleteCartByIDRequest: (id, user) => {
+      dispatch(actions.deleteCartByIDRequest(id, user));
     },
-    updateCartRequest: (cart) => {
-      dispatch(actions.updateCartRequest(cart));
+    updateCartRequest: (cart, user) => {
+      dispatch(actions.updateCartRequest(cart, user));
     },
   };
 };
-export default connect(null, mapDispatchToProps)(ItemCartMain);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemCartMain);

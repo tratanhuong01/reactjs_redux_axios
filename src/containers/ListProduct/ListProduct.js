@@ -3,9 +3,10 @@ import ItemProduct from "../../components/General/ItemProduct/ItemProduct";
 import { connect } from "react-redux";
 class ListProduct extends Component {
   render() {
-    var { filterProduct } = this.props;
+    var { filterProduct, product } = this.props;
     var products = filterProduct.products;
-    products = typeof products !== "undefined" ? filterProduct.products : [];
+    products =
+      typeof products !== "undefined" ? filterProduct.products : product;
     var showProducts = products.map((product, index) => {
       return <ItemProduct key={index} product={product} />;
     });

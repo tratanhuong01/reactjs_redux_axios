@@ -44,7 +44,15 @@ button:focus {
 #main {
   background-image: none;
 }
+@media (min-width: 1024px) {
+  .product__search {
+    width: 23% !important;
+  }
+}
 @media (min-width: 768px) {
+  .product__search {
+    width: 31%;
+  }
   #main {
     background-image: url(".././images/banner_1.jpg");
     height: 90vh;
@@ -67,6 +75,9 @@ button:focus {
 .news__view {
   display: none;
 }
+.w-30\% {
+  width: 30%;
+}
 .news__left:hover > .news__view {
   display: block;
 }
@@ -79,9 +90,34 @@ button:focus {
 .w-46\% {
   width: 46%;
 }
-#modal__cart__added {
+.w-47\% {
+  width: 47%;
+}
+.w-47\.5\% {
+  width: 47.5%;
+}
+.w-48\% {
+  width: 48%;
+}
+.modal__cart__added {
   display: none;
 }
-#toggel__hover__cart_show:hover > #modal__cart__added {
+.toggel__hover__cart_show:hover > .modal__cart__added {
   display: block;
+}
+.h-120 {
+  height: 480px;
+}
+.h-85vh {
+  height: 85vh;
+}
+.scrollbar-css::-webkit-scrollbar {
+  width: 8.5px;
+}
+.scrollbar-css::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+}
+.scrollbar-css:hover::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 5px;
 }

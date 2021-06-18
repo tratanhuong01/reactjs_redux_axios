@@ -4,7 +4,6 @@ import Right from "../../components/DetailProduct/ViewProductWhenScroll/Right";
 
 class ViewProductWhenScroll extends Component {
   render() {
-    var { product } = this.props;
     return (
       <div
         id="modal__product__children"
@@ -12,8 +11,8 @@ class ViewProductWhenScroll extends Component {
         border-solid border-gray-100"
       >
         <div className="xl:w-4/5 md:bg-transparent mx-auto flex p-4">
-          <Left product={product} />
-          <Right product={product} />
+          <Left />
+          <Right />
         </div>
       </div>
     );

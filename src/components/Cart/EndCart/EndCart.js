@@ -43,7 +43,7 @@ class EndCart extends Component {
                 ml-10 * items-center cursor-not-allowed"
                 value="Thanh toán"
                 onChange={() => ""}
-                disabled="true"
+                disabled={true}
               />
             ) : (
               <Link

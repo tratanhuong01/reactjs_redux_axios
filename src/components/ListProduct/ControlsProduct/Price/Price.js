@@ -14,7 +14,7 @@ class Price extends Component {
     var name = target.name;
     var value = target.value;
     this.setState({
-      [name]: value,
+      [name]: value.replaceAll(",", ""),
     });
   };
   filterProductPrice = () => {
@@ -28,43 +28,26 @@ class Price extends Component {
     return (
       <>
         <p className="text-xl my-3 font-semibold">Lọc giá</p>
-        <div className="w-full my-2">
-          <input
-            type="text"
-            name=""
-            className="w-full bg-white p-2 mb-2 rounded-xl text-center"
-            value={new Intl.NumberFormat("ban", "id").format(from) + " đ"}
-            onChange={() => ""}
-            disabled
-          />
-          <input
-            type="range"
-            name="from"
-            min="0"
-            max="100000000"
-            value={from}
-            className="w-full mb-2"
-            onChange={this.onChange}
-          />
-        </div>
-        <div className="w-full my-2">
-          <input
-            type="text"
-            name=""
-            className="w-full bg-white p-2 mb-2 rounded-xl text-center"
-            value={new Intl.NumberFormat("ban", "id").format(to) + " đ"}
-            onChange={() => ""}
-            disabled
-          />
-          <input
-            type="range"
-            name="to"
-            min="0"
-            max="100000000"
-            value={to}
-            className="w-full"
-            onChange={this.onChange}
-          />
+        <div className="w-full my-2 flex">
+          <div className="flex items-center">
+            <input
+              type="text"
+              name="from"
+              className="w-1/2 text-sm bg-white p-2 mb-2 text-center"
+              value={new Intl.NumberFormat("ban", "id").format(from) + " VNĐ"}
+              placeholder="Từ"
+              onChange={this.onChange}
+            />
+            <i className="bx bxs-right-arrow-alt text-gray-700 text-xl"></i>
+            <input
+              type="text"
+              name="to"
+              className="w-1/2 bg-white text-sm p-2 mb-2 rounded-xl text-center"
+              value={new Intl.NumberFormat("ban", "id").format(to) + " VNĐ"}
+              placeholder="Đến"
+              onChange={this.onChange}
+            />
+          </div>
         </div>
         <button
           onClick={this.filterProductPrice}

@@ -177,14 +177,35 @@
   "carts": [
     {
       "IDProduct": "SP103",
-      "IDKhachHang": "",
+      "IDKhachHang": 2,
       "Color": "HỒNG",
       "Size": 40,
-      "NumberChoose": 1,
+      "NumberChoose": 5,
       "id": 1
     }
   ],
-  "users": [],
+  "users": [
+    {
+      "fullName": "Trà Tấn Hưởng",
+      "numberPhone": "0354114665",
+      "email": "tratanhuong01@gmail.com",
+      "address": "",
+      "birthday": "2001-10-01",
+      "password": "huongtra2001",
+      "typeAccount": 0,
+      "id": 1
+    },
+    {
+      "fullName": "Tuấn Tiền Tỉ",
+      "numberPhone": "0354114665",
+      "email": "tuantienti@gmail.com",
+      "address": "",
+      "birthday": "1999-01-01",
+      "password": "huong123",
+      "typeAccount": 0,
+      "id": 2
+    }
+  ],
   "promo__code": [
     {
       "id": 0,
@@ -192,6 +213,46 @@
       "code": "KSNH10091",
       "dateFrom": "02-06-2021",
       "dateTo": "20-06-2021"
+    }
+  ],
+  "news": [
+    {
+      "id": 0,
+      "datePost": "14-06-2021",
+      "title": "Chi tiết smartwatch mới nhất của samsung",
+      "comment": [],
+      "thumnail": "",
+      "Content": ""
+    }
+  ],
+  "bills": [
+    {
+      "id": 0,
+      "IDKhachHang": "",
+      "Fee": "",
+      "totalMoney": "",
+      "address": "",
+      "numberPhone": "",
+      "email": "",
+      "note": "",
+      "PaymentMethod": {
+        "type": "",
+        "infomation": {
+          "typeCard": "",
+          "codeCard": ""
+        }
+      },
+      "dateCreateBill": ""
+    }
+  ],
+  "detail__bill": [
+    {
+      "id": 0,
+      "IDHoaDon": "",
+      "IDSanPham": "",
+      "Number": "",
+      "Color": "",
+      "Size": ""
     }
   ]
 }

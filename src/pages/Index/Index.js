@@ -7,6 +7,8 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.closeModal();
+    this.getProductTopSell(this.props.product);
+    this.props.setModalDefault();
   }
   getProductTopSell = (product) => {
     if (product.length > 0) this.props.getProductTopSell(product);
@@ -15,11 +17,10 @@ class Index extends Component {
     this.props.closeModal();
   };
   render() {
-    this.getProductTopSell(this.props.product);
     return (
       <Fragment>
         <MainIndex />
-        <Second />
+        <Second isPopup={true} />
       </Fragment>
     );
   }
@@ -36,6 +37,9 @@ const mapDispatchToProps = (dispatch, props) => {
     },
     closeModal: () => {
       dispatch(actions.closeModal());
+    },
+    setModalDefault: () => {
+      dispatch(actions.setModalDefault());
     },
   };
 };

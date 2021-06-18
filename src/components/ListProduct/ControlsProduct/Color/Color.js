@@ -1,12 +1,44 @@
 import React, { Component } from "react";
 import ItemColor from "./ItemColor/ItemColor";
 import { connect } from "react-redux";
+import * as actions from "../../../../actions/index";
 class Color extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      color: this.props.filterProduct.color,
+    };
+  }
+
+  filterProductColor = (products, color) => {
+    this.setState({
+      color: color,
+    });
+    var { filterProductColor, filterProductBrand, filterProductSize } =
+      this.props;
+    filterProductColor(products, color);
+    filterProductBrand(
+      this.props.filterProduct.products,
+      this.props.filterProduct.brand
+    );
+    filterProductSize(
+      this.props.filterProduct.products,
+      this.props.filterProduct.size
+    );
+  };
   render() {
-    var colorProduct = this.props.getProduct.colorProduct;
-    colorProduct = colorProduct === null ? [] : colorProduct;
+    var { getProduct, filterProduct } = this.props;
+    var colorProduct =
+      getProduct.colorProduct === null ? [] : getProduct.colorProduct;
     var showColorProducts = colorProduct.map((item, index) => {
-      return <ItemColor item={item} key={index} />;
+      return (
+        <ItemColor
+          item={item}
+          key={index}
+          filterProductColor={this.filterProductColor}
+          products={this.props.product}
+        />
+      );
     });
     return (
       <>
@@ -18,7 +50,25 @@ class Color extends Component {
 }
 const mapStateToProps = (state) => {
   return {
+    product: state.product,
     getProduct: state.getProduct,
+    filterProduct: state.filterProduct,
   };
 };
-export default connect(mapStateToProps)(Color);
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    filterProductBrand: (products, data) => {
+      dispatch(actions.filterProductBrand(products, data));
+    },
+    filterProductSize: (products, data) => {
+      dispatch(actions.filterProductSize(products, data));
+    },
+    filterProductColor: (products, data) => {
+      dispatch(actions.filterProductColor(products, data));
+    },
+    filterProductPrice: (products, data) => {
+      dispatch(actions.filterProductPrice(products, data));
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Color);

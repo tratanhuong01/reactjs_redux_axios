@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-
+import { connect } from "react-redux";
 class Left extends Component {
   render() {
-    var { product } = this.props;
+    var { product, imageMain } = this.props.detailProduct;
     return (
       <div className="w-1/2 flex flex-wrap">
         <div className="w-1/5">
-          <img src={product.UrlImage[0].Url} alt="" />
+          <img src={imageMain} alt="" />
         </div>
         <div className="w-4/5 pl-4">
           <p className="mb-2">{product.NameProduct}</p>
@@ -41,5 +41,9 @@ class Left extends Component {
     );
   }
 }
-
-export default Left;
+const mapStateToProps = (state) => {
+  return {
+    detailProduct: state.detailProduct,
+  };
+};
+export default connect(mapStateToProps, null)(Left);

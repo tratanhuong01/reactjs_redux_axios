@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import * as Config from "../../../../../constants/Config";
 class DescribeChild extends Component {
   render() {
-    var { product } = this.props.detailProduct;
+    var { product, status } = this.props.detailProduct;
     return (
       <>
         <div className="mb-3 flex">
@@ -35,16 +37,19 @@ class DescribeChild extends Component {
           <li className="my-2">Kích thước màn hình : 1,2"</li>
           <li className="my-2">Độ phân giải màn hình : 360 x 360 pixels</li>
           <li className="my-2">Luôn hiển thị : có</li>
-
-          <li className="my-7">
-            <button
-              className="bg-organce px-10 py-2.5 rounded-full 
+          {status === true ? (
+            ""
+          ) : (
+            <li className="my-7">
+              <Link
+                className="bg-organce px-10 py-2.5 rounded-full 
                     text-white font-semibold"
-              type="button"
-            >
-              Xem chi tiết
-            </button>
-          </li>
+                to={`${Config.PAGE_DETAIL_PRODUCT}/${product.Path}`}
+              >
+                Xem chi tiết
+              </Link>
+            </li>
+          )}
         </ul>
       </>
     );

@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import * as actions from "../../../../actions/index";
 class OptionAndView extends Component {
   openModalFastViewProduct = () => {
-    this.props.openModalFastViewProduct();
+    this.props.openModalFastViewProduct(this.props.product, null);
   };
   render() {
     var { product } = this.props;
     return (
       <div
         className="w-full hidden bg-pink-500 bg-opacity-30 h-64 absolute top-0 
-        left-0 justify-center items-product"
+        left-0 justify-center items-product animate__animated animate__fadeIn"
       >
         <div className="w-full flex items-center">
           <div className="w-full text-center">
@@ -38,8 +38,10 @@ class OptionAndView extends Component {
 }
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    openModalFastViewProduct: () => {
-      dispatch(actions.openModalFastViewProduct());
+    openModalFastViewProduct: (product, slug) => {
+      dispatch(actions.resetDetailProduct());
+      dispatch(actions.viewFastProduct(product));
+      dispatch(actions.openModalFastViewProduct(product, slug));
     },
   };
 };
