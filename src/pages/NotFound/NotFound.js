@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
+import * as Config from "../../constants/Config";
 class NotFound extends Component {
   render() {
     return (
@@ -19,12 +20,13 @@ class NotFound extends Component {
             kết mà bạn đang cố mở có chính xác không.
           </p>
           <p className="text-center my-6">
-            <span
+            <Link
+              to={Config.PAGE_PRODUCT}
               className="px-3 py-3 bg-1877F2 rounded-lg 
-              font-bold text-white"
+              font-bold text-white text-blue-500"
             >
               Xem sản phẩm
-            </span>
+            </Link>
           </p>
         </div>
       </div>

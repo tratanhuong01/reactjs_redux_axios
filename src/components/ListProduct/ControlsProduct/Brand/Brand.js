@@ -16,16 +16,24 @@ class Brand extends Component {
     this.setState({
       brand: brand,
     });
-    var { filterProductColor, filterProductBrand, filterProductSize } =
-      this.props;
+    var {
+      filterProductColor,
+      filterProductBrand,
+      filterProductSize,
+      filterProductPrice,
+    } = this.props;
     filterProductBrand(products, brand);
     filterProductColor(
       this.props.filterProduct.products,
       this.props.filterProduct.color
     );
-    // filterProductSize(
+    filterProductSize(
+      this.props.filterProduct.products,
+      this.props.filterProduct.size
+    );
+    // filterProductPrice(
     //   this.props.filterProduct.products,
-    //   this.props.filterProduct.size
+    //   this.props.filterProduct.price
     // );
   };
   render() {

@@ -24,9 +24,9 @@ class ModalCartAdded extends Component {
       <div
         className="w-80 rounded-lg bg-white absolute animate__animated animate__zoomIn 
         top-20 right-1/4 text-gray-700 z-50 modal__cart__added border-2 border-solid 
-        border-gray-200 shadow-lg"
+        border-gray-200 shadow-lg "
       >
-        <div className="w-full max-h-72 overflow-y-auto p-2">
+        <div className="w-full max-h-72 overflow-y-auto p-2 scrollbar-css">
           {showAllCart.length === 0 ? (
             <>
               <p className="text-center font-semibold my-4">

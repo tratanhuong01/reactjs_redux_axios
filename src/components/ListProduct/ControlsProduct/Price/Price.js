@@ -5,23 +5,100 @@ class Price extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      from: 0,
-      to: 100000000,
+      from: new Intl.NumberFormat("ban", "id").format(0) + " VNĐ",
+      to: new Intl.NumberFormat("ban", "id").format(100000000) + " VNĐ",
     };
   }
-  onChange = (event) => {
+  replaceAllString = (string) => {
+    return string.replace(/\D/g, "");
+  };
+  onChangeFrom = (event) => {
     var target = event.target;
     var name = target.name;
-    var value = target.value;
-    this.setState({
-      [name]: value.replaceAll(",", ""),
-    });
+    var value = Number(this.replaceAllString(target.value));
+    var to = Number(this.replaceAllString(this.state.to));
+    if (event.nativeEvent.inputType === "deleteContentBackward") {
+      if (Math.round(value / 10) <= 0) {
+        this.setState({
+          [name]: new Intl.NumberFormat("ban", "id").format(0) + " VNĐ",
+        });
+      } else {
+        this.setState({
+          [name]:
+            new Intl.NumberFormat("ban", "id").format(value / 10) + " VNĐ",
+        });
+      }
+    } else {
+      if (value.length < 0) {
+        this.setState({
+          [name]: new Intl.NumberFormat("ban", "id").format(0) + " VNĐ",
+        });
+      } else {
+        if (value > to) {
+          this.setState({
+            [name]:
+              new Intl.NumberFormat("ban", "id").format(to - 1000000) + " VNĐ",
+          });
+        } else {
+          this.setState({
+            [name]: new Intl.NumberFormat("ban", "id").format(value) + " VNĐ",
+          });
+        }
+      }
+    }
+  };
+  onChangeTo = (event) => {
+    var target = event.target;
+    var name = target.name;
+    var value = Number(this.replaceAllString(target.value));
+    var from = Number(this.replaceAllString(this.state.from));
+    if (event.nativeEvent.inputType === "deleteContentBackward") {
+      if (from === 0) {
+        this.setState({
+          [name]: new Intl.NumberFormat("ban", "id").format(1000000) + " VNĐ",
+        });
+      } else if (from === value) {
+        this.setState({
+          [name]:
+            new Intl.NumberFormat("ban", "id").format(value + 1000000) + " VNĐ",
+        });
+      } else {
+        if (Math.round(value / 10) <= from) {
+          this.setState({
+            [name]: new Intl.NumberFormat("ban", "id").format(from) + " VNĐ",
+          });
+        } else {
+          this.setState({
+            [name]:
+              new Intl.NumberFormat("ban", "id").format(value / 10) + " VNĐ",
+          });
+        }
+      }
+    } else {
+      if (value > 100000000) {
+        this.setState({
+          [name]: new Intl.NumberFormat("ban", "id").format(100000000) + " VNĐ",
+        });
+      } else {
+        if (value < from) {
+          this.setState({
+            [name]:
+              new Intl.NumberFormat("ban", "id").format(from + 1000000) +
+              " VNĐ",
+          });
+        } else {
+          this.setState({
+            [name]: new Intl.NumberFormat("ban", "id").format(value) + " VNĐ",
+          });
+        }
+      }
+    }
   };
   filterProductPrice = () => {
-    this.props.filterProductPrice(this.props.product, {
-      from: this.state.from,
-      to: this.state.to,
-    });
+    // this.props.filterProductPrice(this.props.product, {
+    //   from: this.replaceAllString(this.state.from),
+    //   to: this.replaceAllString(this.state.to),
+    // });
   };
   render() {
     var { from, to } = this.state;
@@ -34,18 +111,18 @@ class Price extends Component {
               type="text"
               name="from"
               className="w-1/2 text-sm bg-white p-2 mb-2 text-center"
-              value={new Intl.NumberFormat("ban", "id").format(from) + " VNĐ"}
+              value={from}
               placeholder="Từ"
-              onChange={this.onChange}
+              onChange={this.onChangeFrom}
             />
             <i className="bx bxs-right-arrow-alt text-gray-700 text-xl"></i>
             <input
               type="text"
               name="to"
               className="w-1/2 bg-white text-sm p-2 mb-2 rounded-xl text-center"
-              value={new Intl.NumberFormat("ban", "id").format(to) + " VNĐ"}
+              value={to}
               placeholder="Đến"
-              onChange={this.onChange}
+              onChange={this.onChangeTo}
             />
           </div>
         </div>

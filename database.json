@@ -182,6 +182,38 @@
       "Size": 40,
       "NumberChoose": 5,
       "id": 1
+    },
+    {
+      "IDProduct": "SP102",
+      "IDKhachHang": "",
+      "Color": "XANH",
+      "Size": 46,
+      "NumberChoose": 1,
+      "id": 2
+    },
+    {
+      "IDProduct": "SP102",
+      "IDKhachHang": 1,
+      "Color": "XANH",
+      "Size": 46,
+      "NumberChoose": "1",
+      "id": 4
+    },
+    {
+      "IDProduct": "SP101",
+      "IDKhachHang": 1,
+      "Color": "TRẮNG",
+      "Size": 40,
+      "NumberChoose": 1,
+      "id": 5
+    },
+    {
+      "IDProduct": "SP101",
+      "IDKhachHang": 1,
+      "Color": "TRẮNG",
+      "Size": 40,
+      "NumberChoose": 1,
+      "id": 6
     }
   ],
   "users": [

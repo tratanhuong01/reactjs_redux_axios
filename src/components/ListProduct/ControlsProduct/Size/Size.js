@@ -13,10 +13,28 @@ class Size extends Component {
     this.setState({
       size: size,
     });
-    this.props.filterProductSize(products, size);
+    var {
+      filterProductColor,
+      filterProductBrand,
+      filterProductSize,
+      filterProductPrice,
+    } = this.props;
+    filterProductSize(products, size);
+    filterProductColor(
+      this.props.filterProduct.products,
+      this.props.filterProduct.color
+    );
+    filterProductBrand(
+      this.props.filterProduct.products,
+      this.props.filterProduct.brand
+    );
+    // filterProductPrice(
+    //   this.props.filterProduct.products,
+    //   this.props.filterProduct.price
+    // );
   };
   render() {
-    var { getProduct, filterProduct } = this.props;
+    var { getProduct } = this.props;
     var sizeProduct =
       getProduct.sizeProduct === null ? [] : getProduct.sizeProduct;
     var showSizeProducts = sizeProduct.map((item, index) => {
@@ -24,8 +42,9 @@ class Size extends Component {
         <ItemSize
           item={item}
           key={index}
-          products={filterProduct.products}
+          products={this.props.product}
           filterProductSize={this.filterProductSize}
+          size={this.state.size}
         />
       );
     });
@@ -40,13 +59,23 @@ class Size extends Component {
 const mapStateToProps = (state) => {
   return {
     getProduct: state.getProduct,
+    product: state.product,
     filterProduct: state.filterProduct,
   };
 };
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    filterProductSize: (products, size) => {
-      dispatch(actions.filterProductSize(products, size));
+    filterProductBrand: (products, data) => {
+      dispatch(actions.filterProductBrand(products, data));
+    },
+    filterProductSize: (products, data) => {
+      dispatch(actions.filterProductSize(products, data));
+    },
+    filterProductColor: (products, data) => {
+      dispatch(actions.filterProductColor(products, data));
+    },
+    filterProductPrice: (products, data) => {
+      dispatch(actions.filterProductPrice(products, data));
     },
   };
 };

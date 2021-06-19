@@ -6,7 +6,10 @@ class Left extends Component {
     return (
       <div className="w-1/2 flex flex-wrap">
         <div className="w-1/5">
-          <img src={imageMain} alt="" />
+          <img
+            src={imageMain === null ? product.UrlImage[0].Url : imageMain}
+            alt=""
+          />
         </div>
         <div className="w-4/5 pl-4">
           <p className="mb-2">{product.NameProduct}</p>

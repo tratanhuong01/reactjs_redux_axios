@@ -7,8 +7,9 @@ class ListProduct extends Component {
     var products = filterProduct.products;
     products =
       typeof products !== "undefined" ? filterProduct.products : product;
-    var showProducts = products.map((product, index) => {
-      return <ItemProduct key={index} product={product} />;
+    var showProducts = "";
+    showProducts = products.map((item, index) => {
+      return <ItemProduct key={index} product={item} />;
     });
     return (
       <div className="w-full md:w-4/5 mx-auto xl:w-3/4">

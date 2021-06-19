@@ -14,8 +14,12 @@ class Color extends Component {
     this.setState({
       color: color,
     });
-    var { filterProductColor, filterProductBrand, filterProductSize } =
-      this.props;
+    var {
+      filterProductColor,
+      filterProductBrand,
+      filterProductSize,
+      filterProductPrice,
+    } = this.props;
     filterProductColor(products, color);
     filterProductBrand(
       this.props.filterProduct.products,
@@ -25,9 +29,13 @@ class Color extends Component {
       this.props.filterProduct.products,
       this.props.filterProduct.size
     );
+    // filterProductPrice(
+    //   this.props.filterProduct.products,
+    //   this.props.filterProduct.price
+    // );
   };
   render() {
-    var { getProduct, filterProduct } = this.props;
+    var { getProduct } = this.props;
     var colorProduct =
       getProduct.colorProduct === null ? [] : getProduct.colorProduct;
     var showColorProducts = colorProduct.map((item, index) => {
@@ -36,6 +44,7 @@ class Color extends Component {
           item={item}
           key={index}
           filterProductColor={this.filterProductColor}
+          color={this.state.color}
           products={this.props.product}
         />
       );

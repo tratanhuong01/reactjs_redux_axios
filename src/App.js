@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import routes from "./routes";
 import { connect } from "react-redux";
 import * as actions from "./actions/index";
-import NotFound from "./pages/NotFound/NotFound";
+import Loading from "./components/General/Loading/Loading";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -30,7 +30,7 @@ class App extends Component {
           {product.length > 0 && carts !== null && users !== null ? (
             this.showAllLinks(routes)
           ) : (
-            <NotFound />
+            <Loading />
           )}
         </Switch>
       </Router>
